@@ -1,80 +1,34 @@
 import type { Metadata } from "next";
-import { Fraunces, Outfit } from "next/font/google";
+import { Barlow_Condensed, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-body",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-});
+const body = IBM_Plex_Sans({ subsets: ["latin"], variable: "--font-body", weight: ["400", "500", "600", "700"] });
+const display = Barlow_Condensed({ subsets: ["latin"], variable: "--font-display", weight: ["500", "600", "700", "800"] });
+const mono = IBM_Plex_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://catchthat.io"),
-  title: "CatchThat",
-  description:
-    "CatchThat is building focused software products across internal tools, task management, sports data, and fan experiences.",
+  title: { default: "CatchThat Football", template: "%s | CatchThat Football" },
+  description: "A football simulation from CatchThat.",
   openGraph: {
-    title: "CatchThat",
-    description:
-      "Explore the CatchThat portfolio: VocabHQ, Unpile, CapStack, and Playbook.",
+    title: "CatchThat Football",
+    description: "A football simulation from CatchThat.",
     url: "https://catchthat.io",
-    siteName: "CatchThat",
+    siteName: "CatchThat Football",
     type: "website",
-    images: [
-      {
-        url: "/logo.png",
-      },
-    ],
+    images: [{ url: "/logo.png" }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "CatchThat",
-    description:
-      "CatchThat is building focused software products across internal tools, task management, sports data, and fan experiences.",
-    images: ["/logo.png"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  twitter: { card: "summary_large_image", title: "CatchThat Football", images: ["/logo.png"] },
+  icons: { icon: "/favicon.ico" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const themeScript = `
-    (function() {
-      try {
-        var storedTheme = localStorage.getItem("theme");
-        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        var shouldUseDark = storedTheme ? storedTheme === "dark" : prefersDark;
-        document.documentElement.classList.toggle("dark", shouldUseDark);
-      } catch (error) {}
-    })();
-  `;
-
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${outfit.variable} ${fraunces.variable}`}
-      suppressHydrationWarning
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
-      <body className="font-[var(--font-body)] antialiased">
-        <div className="relative min-h-screen">
-          <SiteHeader />
-          {children}
-          <SiteFooter />
-        </div>
+    <html lang="en" className={`${body.variable} ${display.variable} ${mono.variable}`}>
+      <body>
+        <div className="relative min-h-screen"><SiteHeader />{children}<SiteFooter /></div>
       </body>
     </html>
   );

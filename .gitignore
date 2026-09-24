@@ -4,3 +4,7 @@ node_modules
 npm-debug.log*
 *.log
 .DS_Store
+*.tsbuildinfo
+.env*
+!.env.example
+.vercel

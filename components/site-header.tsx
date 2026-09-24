@@ -1,57 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle";
-
-const navigation = [
-  { href: "#roster", label: "The Roster" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
-];
+import { usePathname } from "next/navigation";
+import { releaseNavigation, sitePhase } from "@/lib/site-config";
 
 export function SiteHeader() {
-  return (
-    <header className="sticky top-0 z-30 border-b border-[var(--border)] bg-[var(--surface-glass)] backdrop-blur-2xl">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          aria-label="CatchThat home"
-          className="group flex items-center gap-3"
-        >
-          <Image
-            src="/logo.png"
-            alt="CatchThat logo"
-            width={36}
-            height={36}
-            priority
-            className="transition-transform duration-300 group-hover:scale-105"
-          />
-          <div className="font-[var(--font-display)] text-xl font-bold tracking-tight text-[var(--text)]">
-            CatchThat
-          </div>
-        </Link>
+  const pathname = usePathname();
+  const releaseView = pathname.startsWith("/game") || (pathname === "/" && sitePhase === "release");
+  const updatesHref = pathname.startsWith("/game") ? "/game#updates" : pathname === "/" ? "#updates" : "/#updates";
 
-        <nav className="hidden items-center gap-8 text-sm font-medium text-[var(--muted)] md:flex">
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="transition-colors duration-200 hover:text-[var(--text)]"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <Link
-            href="mailto:sause@catchthat.io"
-            className="inline-flex items-center rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-[var(--accent-contrast)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_28px_var(--accent-shadow)]"
-          >
-            Contact
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
+  return <header className="site-header">
+    <div className="page-shell site-header-inner">
+      <Link href="/" aria-label="CatchThat Football home" className="site-brand">
+        <Image src="/logo.png" alt="" width={37} height={37} priority />
+        <span>CATCHTHAT <b>FOOTBALL</b></span>
+      </Link>
+      <Link href={updatesHref} className="header-link">GET UPDATES <span aria-hidden="true">↗</span></Link>
+    </div>
+    {releaseView && <nav className="release-nav page-shell" aria-label="Game navigation">
+      {releaseNavigation.map((item) => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>)}
+    </nav>}
+  </header>;
 }
