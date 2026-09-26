@@ -142,14 +142,11 @@ body::before { display: none; }
 ::selection { background: rgba(233, 176, 106, .3); }
 .page-shell { max-width: 1440px; padding-inline: clamp(20px, 4vw, 56px); }
 .site-header { position: relative; z-index: 10; background: #16211b; border-bottom: 1px solid var(--border); }
-.site-header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.site-header-inner { min-height: 76px; display: flex; align-items: center; gap: 20px; }
 .site-brand { display: inline-flex; align-items: center; gap: 11px; color: #e9d9a8; }
 .site-brand img { object-fit: contain; }
 .site-brand span { font-family: var(--font-display), sans-serif; font-size: 24px; font-weight: 700; letter-spacing: .03em; line-height: 1; white-space: nowrap; }
 .site-brand b { color: #e9b06a; font-weight: 700; }
-.header-link { padding: 11px 16px; border: 1px solid var(--border-strong); color: #e9d9a8; font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 600; letter-spacing: .06em; transition: background .2s, border-color .2s; }
-.header-link:hover { background: #22332a; border-color: #e9b06a; }
-.header-link span { margin-left: 6px; color: #e9b06a; }
 .release-nav { display: flex; gap: 24px; overflow-x: auto; padding-top: 0; padding-bottom: 15px; color: #9bae9c; font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; scrollbar-width: none; }
 .release-nav a { white-space: nowrap; }
 .release-nav a:hover, .release-nav a[aria-current="page"] { color: #e9b06a; }
@@ -205,7 +202,7 @@ body::before { display: none; }
 .sim-playclock.inactive small { color: #9bae9c; }
 .sim-down { position: absolute; left: calc(50% + 200px); color: #e9d9a8; font-family: var(--font-display), sans-serif; font-size: clamp(18px, 2vw, 24px); font-weight: 700; letter-spacing: .05em; white-space: nowrap; }
 .sim-down em { color: #e9b06a; font-style: normal; }
-.sim-call-action:focus-visible, .call-dialog button:focus-visible, .header-link:focus-visible, .signup-form button:focus-visible { outline: 2px solid #f5d39c; outline-offset: 3px; }
+.sim-call-action:focus-visible, .call-dialog button:focus-visible, .signup-form button:focus-visible { outline: 2px solid #f5d39c; outline-offset: 3px; }
 .call-scrim { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; padding: 14px; background: rgba(8,13,10,.82); }
 .call-dialog { display: flex; flex-direction: column; width: min(740px, 100%); max-height: 100%; overflow: hidden; border: 1px solid rgba(233,217,168,.3); border-radius: 9px; background: #1b2922; box-shadow: 0 22px 70px rgba(0,0,0,.5); }
 .call-dialog-head { flex: none; display: flex; align-items: center; justify-content: space-between; min-height: 52px; padding: 8px 18px; border-bottom: 1px solid rgba(233,217,168,.16); }
@@ -276,7 +273,6 @@ body::before { display: none; }
   .site-header-inner { min-height: 66px; }
   .site-brand span { font-size: 19px; }
   .site-brand img { width: 30px; height: 30px; }
-  .header-link { padding: 9px 10px; font-size: 9px; }
   .teaser-intro { padding-top: 55px; padding-bottom: 36px; }
   .teaser-copy h1 { font-size: clamp(62px, 17vw, 87px); }
   .teaser-lede { margin-top: 17px; }
@@ -315,7 +311,6 @@ body::before { display: none; }
   .site-header-inner { gap: 8px; }
   .site-brand { gap: 7px; }
   .site-brand span { font-size: 16px; }
-  .header-link { padding: 8px; font-size: 8px; }
   .teaser-intro { padding-top: 38px; gap: 26px; padding-bottom: 28px; }
   .teaser-copy h1 { font-size: clamp(55px, 16vw, 75px); }
 }
