@@ -1,0 +1,9 @@
+{
+  "engineBinarySha256": "92d8750ca588d5a2223d3244cc8777aeb9077710ff49ece67a4e10c4977cb49c",
+  "checkoutRevision": "3b520da76d4950f4e78e1c6ef4e90bf09768e95c",
+  "gameSeed": 7,
+  "home": "SEA",
+  "away": "DAL",
+  "defense": "cover_three",
+  "precision": "Every engine frame retained; lateral coordinates rounded to 5 decimals, yards to 3, facing to 1."
+}

@@ -177,13 +177,12 @@ body::before { display: none; }
 .preview-section { padding-bottom: clamp(65px, 8vw, 125px); }
 .preview-title { margin: 0 0 16px; color: #e9d9a8; font-family: var(--font-display), sans-serif; font-size: clamp(32px, 3.3vw, 42px); font-weight: 700; line-height: 1; text-transform: uppercase; }
 .sim-preview { overflow: hidden; border: 1px solid rgba(233,217,168,.19); background: #1c2a22; box-shadow: 0 25px 70px rgba(0,0,0,.17); }
-.sim-stage { position: relative; width: 100%; height: clamp(340px, 32vw, 420px); overflow: hidden; background: #1b2c20; }
+.sim-stage { position: relative; width: 100%; height: clamp(440px, 52vw, 676px); overflow: hidden; background: #1b2c20; }
 .sim-field { display: block; width: 100%; height: 100%; }
-.field-number { fill: rgba(221,233,217,.49); font-family: var(--font-display), sans-serif; font-size: 22px; font-weight: 600; letter-spacing: .05em; }
-.player-name { fill: #e6ece0; font-family: var(--font-mono), monospace; font-size: 7.5px; font-weight: 500; letter-spacing: .02em; paint-order: stroke; stroke: rgba(8,20,12,.5); stroke-width: 2px; }
-.sim-marker { paint-order: stroke; filter: drop-shadow(0 1px 1px rgba(0,0,0,.7)); }
-.play-result { fill: #e9b06a; font-family: var(--font-display), sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .08em; }
-.sim-call-action { position: absolute; top: 18px; right: 20px; padding: 12px 18px; border: 1px solid rgba(233,217,168,.3); border-radius: 5px; background: #e9b06a; color: #172018; box-shadow: 0 7px 22px rgba(0,0,0,.25); font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 700; letter-spacing: .08em; cursor: pointer; }
+.sim-field-controls { position: absolute; inset: 12px 16px auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 12px; pointer-events: none; }
+.sim-result-slot { grid-column: 2; min-height: 28px; }
+.sim-result { display: block; padding: 6px 12px; border: 1px solid #0b0b0b; border-radius: 5px; background: #a7f3d0; color: #0b0b0b; font-family: ui-monospace, monospace; font-size: 12px; font-weight: 700; letter-spacing: .5px; white-space: nowrap; }
+.sim-call-action { grid-column: 3; justify-self: end; pointer-events: auto; padding: 12px 18px; border: 1px solid rgba(233,217,168,.3); border-radius: 5px; background: #e9b06a; color: #172018; box-shadow: 0 7px 22px rgba(0,0,0,.25); font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 700; letter-spacing: .08em; cursor: pointer; }
 .sim-call-action:hover { background: #f2c186; }
 .sim-control-bar { position: relative; min-height: 74px; display: flex; align-items: center; justify-content: center; gap: 20px; padding: 11px 16px; background: #16211b; border-top: 1px solid rgba(233,217,168,.13); }
 .sim-score { flex: none; display: flex; align-items: stretch; height: 50px; overflow: hidden; border: 1px solid rgba(233,217,168,.2); border-radius: 7px; background: #101912; box-shadow: 0 3px 14px rgba(0,0,0,.23); }
@@ -280,8 +279,10 @@ body::before { display: none; }
   .teaser-copy h1 { font-size: clamp(62px, 17vw, 87px); }
   .teaser-lede { margin-top: 17px; }
   .teaser-signup { width: 100%; max-width: 520px; }
-  .sim-stage { height: 338px; }
-  .sim-field { width: max(760px, 100%); margin-left: calc((100% - max(760px, 100%)) / 2); }
+  .sim-stage { height: 440px; }
+  .sim-field-controls { inset: 10px 10px auto; grid-template-columns: 1fr auto; gap: 8px; }
+  .sim-result-slot { grid-column: 1; justify-self: start; }
+  .sim-call-action { grid-column: 2; }
   .sim-control-bar { flex-wrap: wrap; gap: 6px 12px; padding: 10px; }
   .sim-score { height: 45px; }
   .sim-team { min-width: 77px; padding: 5px 7px 5px 9px; font-size: 18px; }
@@ -289,7 +290,7 @@ body::before { display: none; }
   .sim-clock b { font-size: 17px; }
   .sim-playclock b { font-size: 18px; }
   .sim-down { position: static; width: 100%; font-size: 17px; text-align: center; }
-  .sim-call-action { top: 11px; right: 11px; padding: 10px 12px; font-size: 10px; }
+  .sim-call-action { padding: 10px 12px; font-size: 10px; }
   .call-scrim { padding: 9px; }
   .call-dialog-head { min-height: 40px; padding: 4px 11px; }
   .call-dialog-head h2 { font-size: 22px; }

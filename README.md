@@ -24,6 +24,19 @@ The current local preview already has the flag enabled, so open `http://localhos
 
 The journal index and article template are in `app/game/journal/`. Add an entry to `content/journal.ts`, keeping `published: false` until it is ready. Once published, the article appears in the journal and in `/game/journal/feed.xml`. The roadmap, design decisions, mechanics, and about copy live in their respective `app/game/` pages and can be expanded without changing the navigation.
 
+## Interactive game preview
+
+The three calls play recorded 30 FPS timelines from the real CatchThat Football engine, including the pre-snap sequence. The browser interpolates engine positions; the run path, possession changes, result, clock, and next down all come from that recording. Each call resets to the same 2nd-and-6 situation; this is a play preview, not a live game simulation.
+
+`content/sim/plays.json` holds compact frames and playbook diagrams. `source.json` records the binary fingerprint and source checkout used for the export. To refresh from a locally built game bridge:
+
+```sh
+python3 scripts/export-sim-preview.py /path/to/catchthat-football
+npm run test:sim
+```
+
+The exporter creates in-memory exhibitions and does not modify the game repository. The web renderer mirrors the desktop field geometry, marker sizes, vision cones, ball arc, and label collision handling. No game engine or backend is required at runtime.
+
 ## Convex connection
 
 The site uses Convex for subscribers, raw game reports, and session heartbeats. The schema and mutations in `convex/` are deployed to development (`resolute-raccoon-990`) and production (`fantastic-crocodile-127`). Run `npx convex dev --once` to push local backend changes to development; run `npx convex deploy` to push them to production. The site's API routes require a server-only `CONVEX_SITE_SECRET` that matches the selected Convex deployment before they invoke a mutation.
