@@ -156,12 +156,12 @@ body::before { display: none; }
 .footer-inner a:hover { color: #e9b06a; }
 
 .teaser-main { min-height: calc(100vh - 155px); }
-.teaser-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(330px, 450px); align-items: end; gap: 60px; padding-top: clamp(54px, 7vw, 105px); padding-bottom: clamp(36px, 5vw, 66px); }
-.teaser-copy h1 { max-width: none; margin: 13px 0 0; color: #e9d9a8; font-family: var(--font-display), sans-serif; font-size: clamp(67px, 8vw, 122px); font-weight: 700; line-height: .9; letter-spacing: -.015em; text-transform: uppercase; text-wrap: balance; }
+.teaser-intro { display: flex; flex-direction: column; align-items: stretch; gap: 36px; padding-top: clamp(54px, 7vw, 105px); padding-bottom: clamp(36px, 5vw, 66px); }
+.teaser-copy h1 { max-width: 760px; margin: 13px 0 0; color: #e9d9a8; font-family: var(--font-display), sans-serif; font-size: clamp(67px, 8vw, 122px); font-weight: 700; line-height: .9; letter-spacing: -.015em; text-transform: uppercase; text-wrap: balance; }
 .teaser-lede { margin: 23px 0 0; color: #d8e0d2; font-family: var(--font-body), sans-serif; font-size: clamp(15px, 1.35vw, 18px); line-height: 1.45; }
 .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #e9b06a; font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; }
 .status-light, .sim-live-dot { width: 7px; height: 7px; display: inline-block; flex: none; border-radius: 50%; background: #7fcf6a; box-shadow: 0 0 10px rgba(127, 207, 106, .45); }
-.teaser-signup { margin: 0; max-width: none; scroll-margin-top: 100px; }
+.teaser-signup { width: min(100%, 520px); margin: 0; scroll-margin-top: 100px; }
 .form-heading { margin-bottom: 12px; color: #e9d9a8; font-family: var(--font-display), sans-serif; font-size: 25px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
 .signup-form { gap: 7px; }
 .signup-form input { height: 49px; border: 1px solid rgba(233,217,168,.24); border-radius: 3px; background: #1b2922; color: #e6ece0; font-family: var(--font-mono), monospace; font-size: 12px; }
@@ -270,8 +270,7 @@ body::before { display: none; }
 .coming-tag { background: #22332a; }
 
 @media (max-width: 900px) {
-  .teaser-intro { grid-template-columns: 1fr; gap: 36px; }
-  .teaser-signup { max-width: 550px; }
+  .teaser-intro { gap: 32px; }
 }
 @media (max-width: 650px) {
   .site-header-inner { min-height: 66px; }
@@ -280,7 +279,7 @@ body::before { display: none; }
   .teaser-intro { padding-top: 55px; padding-bottom: 36px; }
   .teaser-copy h1 { font-size: clamp(62px, 17vw, 87px); }
   .teaser-lede { margin-top: 17px; }
-  .teaser-signup { max-width: none; }
+  .teaser-signup { width: 100%; max-width: 520px; }
   .sim-stage { height: 338px; }
   .sim-field { width: max(760px, 100%); margin-left: calc((100% - max(760px, 100%)) / 2); }
   .sim-control-bar { flex-wrap: wrap; gap: 6px 12px; padding: 10px; }
@@ -319,6 +318,6 @@ body::before { display: none; }
   .teaser-copy h1 { font-size: clamp(55px, 16vw, 75px); }
 }
 @media (min-width: 901px) {
-  .teaser-intro { padding-top: 45px; padding-bottom: 25px; }
+  .teaser-intro { padding-top: clamp(60px, 6vw, 88px); padding-bottom: 52px; }
   .teaser-copy h1 { font-size: clamp(67px, 7.3vw, 103px); }
 }
