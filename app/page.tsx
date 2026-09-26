@@ -10,14 +10,15 @@ export default function HomePage() {
     <section className="teaser-intro page-shell">
       <div className="teaser-copy">
         <h1>Football is in motion.</h1>
-        <p className="teaser-lede">A new football simulation from CatchThat.</p>
+        <p className="teaser-lede">A new football simulator</p>
       </div>
       <div className="teaser-signup" id="updates">
-        <p className="form-heading">Interested? Leave your email.</p>
+        <h2 className="form-heading">Interested? Leave your email.</h2>
         <EmailSignup source="teaser" ready={Boolean(process.env.NEXT_PUBLIC_CONVEX_URL)} />
       </div>
     </section>
     <section className="preview-section page-shell" aria-label="Interactive game preview">
+      <h2 className="preview-title">Game preview</h2>
       <SimPreview />
     </section>
   </main>;

@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:preview": "RELEASE_PREVIEW_ENABLED=true next dev",
+    "dev:release": "RELEASE_PREVIEW_ENABLED=true NEXT_PUBLIC_SITE_PHASE=release next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -9,7 +9,14 @@ npm install
 npm run dev
 ```
 
-Use `.env.example` as the reference for local switches. This workspace's ignored `.env.local` is configured for the raccoon development deployment. The teaser is the default at `/`. Set `RELEASE_PREVIEW_ENABLED=true` to open `/game` and its sections without linking them from the teaser. Set `NEXT_PUBLIC_SITE_PHASE=release` and rebuild to make the game overview the home page when it is ready to publish. In release phase the full navigation is visible and preview `noindex` is removed. The preview flag is a visibility switch, not authentication; anyone who knows the URL can view a preview while enabled.
+Use `.env.example` as the reference for local switches. This workspace's ignored `.env.local` is configured for the raccoon development deployment. The teaser is the default at `/`.
+
+```sh
+npm run dev:preview  # teaser at /, release pages at /game
+npm run dev:release  # release overview at /
+```
+
+The current local preview already has the flag enabled, so open `http://localhost:3000/game` to see the release site. In release phase the full navigation is visible and preview `noindex` is removed. The preview flag is a visibility switch, not authentication; anyone who knows the URL can view a preview while enabled.
 
 `NEXT_PUBLIC_STEAM_URL` activates the Steam CTA. Without it, the site explicitly says the Steam page is coming soon.
 
