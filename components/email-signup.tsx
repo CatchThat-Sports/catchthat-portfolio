@@ -44,7 +44,7 @@ export function EmailSignup({ source, ready = false }: Props) {
         <button type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Joining…" : ready ? "Join the list ↗" : "Request updates ↗"}</button>
       </form>
       <p className={`form-note ${status === "error" ? "error" : status === "success" ? "success" : ""}`} role="status">
-        {message || (ready ? <>Occasional updates. <Link href="/privacy">Privacy policy</Link>.</> : "Opens an email draft to request updates.")}
+        {message || (ready ? <>Updates coming soon. <Link href="/privacy">Privacy policy</Link>.</> : "Opens an email draft to request updates.")}
       </p>
     </>
   );
