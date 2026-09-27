@@ -161,7 +161,7 @@ body::before { display: none; }
 .teaser-lede { margin: 23px 0 0; color: #d8e0d2; font-family: var(--font-body), sans-serif; font-size: clamp(15px, 1.35vw, 18px); line-height: 1.45; }
 .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #e9b06a; font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; }
 .status-light, .sim-live-dot { width: 7px; height: 7px; display: inline-block; flex: none; border-radius: 50%; background: #7fcf6a; box-shadow: 0 0 10px rgba(127, 207, 106, .45); }
-.teaser-signup { width: min(100%, 520px); margin: 0; scroll-margin-top: 100px; }
+.teaser-signup { width: 100%; max-width: 800px; margin: 0; scroll-margin-top: 100px; }
 .form-heading { margin-bottom: 12px; color: #e9d9a8; font-family: var(--font-display), sans-serif; font-size: 25px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
 .signup-form { gap: 7px; }
 .signup-form input { height: 49px; border: 1px solid rgba(233,217,168,.24); border-radius: 3px; background: #1b2922; color: #e6ece0; font-family: var(--font-mono), monospace; font-size: 12px; }
@@ -169,9 +169,9 @@ body::before { display: none; }
 .signup-form input:focus { border-color: #e9b06a; box-shadow: 0 0 0 2px rgba(233,176,106,.14); }
 .signup-form button { height: 49px; padding-inline: 17px; border-radius: 3px; background: #e9b06a; color: #172018; font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 700; letter-spacing: .02em; white-space: nowrap; cursor: pointer; }
 .signup-form button:hover { transform: none; background: #f2c186; box-shadow: none; }
-.teaser-signup .signup-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 9px; }
-.teaser-signup .signup-form input[type="email"] { width: 100%; }
-.teaser-signup .signup-form button { width: auto; min-width: 150px; justify-self: start; }
+.teaser-signup .signup-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; gap: 9px; }
+.teaser-signup .signup-form input[type="email"] { width: 100%; min-height: 49px; }
+.teaser-signup .signup-form button { width: auto; min-width: 150px; }
 .form-note { min-height: 16px; margin-top: 8px; color: #7e9079; font-family: var(--font-mono), monospace; font-size: 10px; }
 .form-note.success { color: #8cda9d; }
 .preview-section { padding-bottom: clamp(65px, 8vw, 125px); }
@@ -278,7 +278,7 @@ body::before { display: none; }
   .teaser-intro { padding-top: 55px; padding-bottom: 36px; }
   .teaser-copy h1 { font-size: clamp(62px, 17vw, 87px); }
   .teaser-lede { margin-top: 17px; }
-  .teaser-signup { width: 100%; max-width: 520px; }
+  .teaser-signup .signup-form button { min-width: 0; padding-inline: 12px; }
   .sim-stage { height: 440px; }
   .sim-field-controls { inset: 10px 10px auto; grid-template-columns: 1fr auto; gap: 8px; }
   .sim-result-slot { grid-column: 1; justify-self: start; }

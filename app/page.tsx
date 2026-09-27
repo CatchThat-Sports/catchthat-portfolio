@@ -13,7 +13,7 @@ export default function HomePage() {
         <p className="teaser-lede">A new football simulator.</p>
       </div>
       <div className="teaser-signup" id="updates">
-        <h2 className="form-heading">Interested? Leave your email.</h2>
+        <h2 className="form-heading">Updates coming soon.</h2>
         <EmailSignup source="teaser" ready={Boolean(process.env.NEXT_PUBLIC_CONVEX_URL)} />
       </div>
     </section>
