@@ -10,7 +10,7 @@ export default function HomePage() {
     <section className="teaser-intro page-shell">
       <div className="teaser-copy">
         <h1>Football is in motion.</h1>
-        <p className="teaser-lede">A new football simulator where every play is yours to call—and every decision shapes the game.</p>
+        <p className="teaser-lede">A new football simulator where every play is yours to call. Every decision shapes the game.</p>
       </div>
       <div className="teaser-signup" id="updates">
         <h2 className="form-heading">Interested? Leave your email.</h2>
