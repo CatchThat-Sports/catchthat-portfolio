@@ -40,10 +40,10 @@ export function EmailSignup({ source, ready = false }: Props) {
         <input className="signup-honeypot" name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" />
         <label htmlFor={`email-${source}`} className="sr-only">Email address</label>
         <input id={`email-${source}`} type="email" autoComplete="email" required maxLength={254} placeholder="Your email address" value={email} onChange={(event) => setEmail(event.target.value)} />
-        <button type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Joining…" : ready ? "Join the list ↗" : "Request updates ↗"}</button>
+        <button type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Joining…" : ready ? "Join the list →" : "Request updates →"}</button>
       </form>
       <p className={`form-note ${status === "error" ? "error" : status === "success" ? "success" : ""}`} role="status">
-        {message || (ready ? "Updates coming soon." : "Opens an email draft to request updates.")}
+        {message || (ready ? "Occasional dev updates and launch news. Unsubscribe anytime." : "Opens an email draft to request updates.")}
       </p>
     </>
   );

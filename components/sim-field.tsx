@@ -85,7 +85,7 @@ export function SimField({ play, elapsed, finished }: { play: RecordedPlay; elap
       const reach = p.r * 3;
       const label = labels.get(p.label)!;
       return <g key={p.label} data-player={p.label} data-carrier={p.carrier || undefined} style={{ opacity: finished && !p.carrier ? .25 : 1, transition: "opacity 400ms ease-out" }}>
-        <title>{p.name} · {p.label}</title>
+        <title>{`${p.name} · ${p.label}`}</title>
         <g transform={`translate(${p.x} ${p.y})`}>
           <path d={`M0 0L${reach * .8192} ${-reach * .5736}A${reach} ${reach} 0 0 1 ${reach * .8192} ${reach * .5736}Z`} transform={`rotate(${p.facing})`} fill="#f5f5f5" opacity={p.carrier ? .26 : .2} />
           {p.target && <circle r={p.r + 4} fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 3" />}

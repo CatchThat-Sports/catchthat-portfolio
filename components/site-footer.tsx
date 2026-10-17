@@ -15,6 +15,7 @@ export function SiteFooter() {
         <Link href="/privacy">PRIVACY</Link>
         <Link href="/terms">TERMS</Link>
         <Link href="mailto:sause@catchthat.io">CONTACT</Link>
+        <a href="https://x.com/sausyville" target="_blank" rel="noopener noreferrer">X</a>
       </div>
     </div>
   </footer>;

@@ -11,16 +11,16 @@ const mono = IBM_Plex_Mono({ subsets: ["latin"], variable: "--font-mono", weight
 export const metadata: Metadata = {
   metadataBase: new URL("https://catchthat.io"),
   title: { default: "CatchThat Football", template: "%s | CatchThat Football" },
-  description: "A football simulation from CatchThat.",
+  description: "A football management sim built on a real play-by-play engine. Run the franchise, or call every snap. Coming to Steam.",
   openGraph: {
     title: "CatchThat Football",
-    description: "A football simulation from CatchThat.",
+    description: "A football management sim built on a real play-by-play engine. Run the franchise, or call every snap. Coming to Steam.",
     url: "https://catchthat.io",
     siteName: "CatchThat Football",
     type: "website",
-    images: [{ url: "/logo.png" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "CatchThat Football" }],
   },
-  twitter: { card: "summary_large_image", title: "CatchThat Football", images: ["/logo.png"] },
+  twitter: { card: "summary_large_image", title: "CatchThat Football", description: "A football management sim built on a real play-by-play engine. Run the franchise, or call every snap. Coming to Steam.", creator: "@sausyville", images: ["/og.png"] },
   icons: { icon: "/favicon.ico" },
 };
 

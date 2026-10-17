@@ -47,7 +47,9 @@ export function SimPreview() {
   const [playing, setPlaying] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [clock, setClock] = useState(40);
+  const [called, setCalled] = useState(false);
   const callButton = useRef<HTMLButtonElement>(null);
+  const root = useRef<HTMLDivElement>(null);
   const play = recordings[playId];
   const timing = playTiming(play);
   const finished = elapsed >= timing.duration;
@@ -55,10 +57,24 @@ export function SimPreview() {
   const call = (id: PlayId) => {
     setPlayId(id);
     setDialogOpen(false);
+    setCalled(true);
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setElapsed(reduceMotion ? playTiming(recordings[id]).duration : 0);
     setPlaying(!reduceMotion);
   };
+
+  // Run the coordinator's call once when the field first scrolls into view, so the preview opens in motion.
+  useEffect(() => {
+    const node = root.current;
+    if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      setPlaying(true);
+    }, { threshold: 0.45 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!dialogOpen) return;
@@ -102,12 +118,12 @@ export function SimPreview() {
   const spot = state.los === 50 ? "50" : state.los < 50 ? `SEA ${state.los}` : `DAL ${100 - state.los}`;
   const outcome = `${playId === "inside-zone" ? "GAIN" : "COMPLETE"} · ${play.yards} YDS`;
 
-  return <div className="sim-preview">
+  return <div className="sim-preview" ref={root}>
     <div className="sim-stage">
       <SimField play={play} elapsed={elapsed} finished={finished} />
       <div className="sim-field-controls">
         <div className="sim-result-slot" role="status" aria-live="polite">{finished && <span className="sim-result">{outcome}</span>}</div>
-        {!dialogOpen && !playing && <button ref={callButton} type="button" className="sim-call-action" onClick={openCallSheet}>▶ CALL PLAY</button>}
+        {!dialogOpen && !playing && <button ref={callButton} type="button" className="sim-call-action" onClick={openCallSheet}>▶ {finished ? "CALL YOUR PLAY" : "CALL PLAY"}</button>}
       </div>
       {dialogOpen && <PlayCallDialog seconds={clock} onChoose={call} onClose={() => { setDialogOpen(false); callButton.current?.focus(); }} />}
     </div>
@@ -120,5 +136,9 @@ export function SimPreview() {
       </div>
       <span className="sim-down"><em>{situation}</em> {spot}</span>
     </div>
+    {finished && <div className="sim-followup">
+      <p>{called ? "That's your call." : "That's one snap."} The full game simulates every snap of every season.</p>
+      <a href="#updates">Join the list →</a>
+    </div>}
   </div>;
 }
