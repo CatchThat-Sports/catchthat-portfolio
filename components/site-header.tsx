@@ -12,7 +12,7 @@ export function SiteHeader() {
   return <header className="site-header">
     <div className="page-shell site-header-inner">
       <Link href="/" aria-label="CatchThat Football home" className="site-brand">
-        <Image src="/logo.png" alt="" width={37} height={37} priority />
+        <Image src="/logo.png" alt="" width={52} height={52} priority />
         <span>CATCHTHAT <b>FOOTBALL</b></span>
       </Link>
     </div>

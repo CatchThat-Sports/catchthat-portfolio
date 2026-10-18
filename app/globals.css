@@ -142,10 +142,10 @@ body::before { display: none; }
 ::selection { background: rgba(233, 176, 106, .3); }
 .page-shell { max-width: 1440px; padding-inline: clamp(20px, 4vw, 56px); }
 .site-header { position: relative; z-index: 10; background: #16211b; border-bottom: 1px solid var(--border); }
-.site-header-inner { min-height: 76px; display: flex; align-items: center; gap: 20px; }
-.site-brand { display: inline-flex; align-items: center; gap: 11px; color: #e9d9a8; }
+.site-header-inner { min-height: 84px; display: flex; align-items: center; gap: 20px; }
+.site-brand { display: inline-flex; align-items: center; gap: 12px; color: #e9d9a8; }
 .site-brand img { object-fit: contain; }
-.site-brand span { font-family: var(--font-display), sans-serif; font-size: 24px; font-weight: 700; letter-spacing: .03em; line-height: 1; white-space: nowrap; }
+.site-brand span { font-family: var(--font-display), sans-serif; font-size: 31px; font-weight: 700; letter-spacing: .03em; line-height: 1; white-space: nowrap; }
 .site-brand b { color: #e9b06a; font-weight: 700; }
 .release-nav { display: flex; gap: 24px; overflow-x: auto; padding-top: 0; padding-bottom: 15px; color: #9bae9c; font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; scrollbar-width: none; }
 .release-nav a { white-space: nowrap; }
@@ -290,8 +290,8 @@ body::before { display: none; }
 }
 @media (max-width: 650px) {
   .site-header-inner { min-height: 66px; }
-  .site-brand span { font-size: 19px; }
-  .site-brand img { width: 30px; height: 30px; }
+  .site-brand span { font-size: 24px; }
+  .site-brand img { width: 42px; height: 42px; }
   .teaser-intro { padding-top: 36px; padding-bottom: 32px; }
   .teaser-copy h1 { font-size: clamp(48px, 12.5vw, 72px); }
   .teaser-lede { margin-top: 17px; }
@@ -331,7 +331,7 @@ body::before { display: none; }
 @media (max-width: 480px) {
   .site-header-inner { gap: 8px; }
   .site-brand { gap: 7px; }
-  .site-brand span { font-size: 16px; }
+  .site-brand span { font-size: 21px; }
   .teaser-intro { padding-top: 28px; gap: 26px; padding-bottom: 28px; }
   .teaser-copy h1 { font-size: clamp(44px, 12.5vw, 60px); }
 }
