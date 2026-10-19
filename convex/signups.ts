@@ -1,4 +1,4 @@
-import { mutationGeneric, queryGeneric } from "convex/server";
+import { internalQueryGeneric, mutationGeneric, queryGeneric } from "convex/server";
 import { v } from "convex/values";
 
 function assertSiteSecret(siteSecret: string) {
@@ -62,5 +62,15 @@ export const markWelcomeSent = mutationGeneric({
     const subscriber = await ctx.db.query("subscribers").withIndex("by_email", (q) => q.eq("email", email.trim().toLowerCase())).first();
     if (subscriber && !subscriber.welcomeSentAt) await ctx.db.patch(subscriber._id, { welcomeSentAt: Date.now() });
     return { ok: true };
+  },
+});
+
+/** Admin-only (run through `npx convex run`): the opt-in record the broadcast sync reads. */
+export const subscribedEmails = internalQueryGeneric({
+  args: {},
+  returns: v.array(v.string()),
+  handler: async (ctx) => {
+    const subscribers = await ctx.db.query("subscribers").collect();
+    return subscribers.filter((subscriber) => subscriber.status === "subscribed").map((subscriber) => subscriber.email);
   },
 });

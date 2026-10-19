@@ -10,6 +10,25 @@ export function getResendClient(): Resend | null {
   return key ? new Resend(key) : null;
 }
 
+/** Broadcasts go to this segment only; the Resend account also holds contacts for other products. */
+export const CATCHTHAT_SEGMENT = "CatchThat Football";
+let segmentId: string | null = null;
+
+export async function catchThatSegmentId(resend: Resend): Promise<string | null> {
+  if (segmentId) return segmentId;
+  const list = await resend.segments.list();
+  if (list.error) throw resendFailure("segment lookup", list.error.name);
+  segmentId = list.data.data.find((segment) => segment.name === CATCHTHAT_SEGMENT)?.id ?? null;
+  return segmentId;
+}
+
+export async function addToCatchThatSegment(resend: Resend, email: string) {
+  const id = await catchThatSegmentId(resend);
+  if (!id) return;
+  const result = await resend.contacts.segments.add({ email, segmentId: id });
+  if (result.error && result.error.statusCode !== 409) throw resendFailure("segment add", result.error.name);
+}
+
 function resendFailure(action: string, name: string): Error {
   return new Error(`Resend ${action} failed: ${name}`);
 }

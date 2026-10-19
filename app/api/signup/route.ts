@@ -3,7 +3,7 @@ import { createHmac, randomBytes } from "node:crypto";
 import { anyApi } from "convex/server";
 import { getConvexClient, getConvexSiteSecret } from "@/lib/convex-server";
 import { readTextWithLimit } from "@/lib/request-body";
-import { getResendClient, resendDeliveryEnabled, sendWelcomeEmail, syncResendContact } from "@/lib/resend";
+import { addToCatchThatSegment, getResendClient, resendDeliveryEnabled, sendWelcomeEmail, syncResendContact } from "@/lib/resend";
 
 export const runtime = "nodejs";
 
@@ -39,6 +39,8 @@ export async function POST(request: Request) {
       await client.mutation(anyApi.signups.markUnsubscribed, { email, siteSecret });
       return NextResponse.json({ ok: true });
     }
+    // The pre-send sync re-adds anyone this misses, so a segment hiccup never fails a signup.
+    await addToCatchThatSegment(resend, email).catch((error) => console.error("Segment add failed:", error instanceof Error ? error.message : "unknown"));
     if (!result.welcomeSentAt && result.unsubscribeToken) {
       await sendWelcomeEmail(resend, email, result.unsubscribeToken);
       await client.mutation(anyApi.signups.markWelcomeSent, { email, siteSecret });

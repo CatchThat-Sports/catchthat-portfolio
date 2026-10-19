@@ -9,7 +9,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:sim": "node --test scripts/test-sim-preview.cjs"
+    "test:sim": "node --test scripts/test-sim-preview.cjs",
+    "test:email": "node --test scripts/email/render.test.mjs",
+    "email": "node --env-file-if-exists=.env.local scripts/email/cli.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
